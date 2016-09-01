@@ -1,0 +1,45 @@
+﻿<div id="codeTemplate">
+
+
+    <div id="definition">
+        <div class="mdl-card mdl-shadow--2dp">
+
+            <div class="mdl-card__supporting-text">
+                <h4 id="title">create</h4>
+                <p id="text">
+                   create an observable
+                 </p>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Read More
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--hr class="seperator" />-->
+
+</div>
+<ng-include src="'views/buttons.html'"></ng-include>
+<textarea id="snippet" style="display:none">
+/* Using a function */
+var btnNext = document.querySelectorAll('button.onNext')[0]
+var btnErr = document.querySelectorAll('button.onError')[0]
+var btnComp = document.querySelectorAll('button.complete')[0]
+
+var source = Rx.Observable.create(function (observer) {
+    if(!btnNext.onclick) btnNext.onclick=function(){
+        observer.onNext('Got that')
+    }
+
+    // Note that this is optional, you do not have to return this if you require no cleanup
+    return function () { console.log('disposed'); };
+});
+
+var subscription = source.subscribe(
+    function (x) { console.log('Next: ' + x); },
+    function (err) { console.log('Error: ' + err); },
+    function () { console.log('Completed'); });
+</textarea>
+

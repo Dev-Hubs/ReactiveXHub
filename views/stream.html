@@ -1,0 +1,28 @@
+﻿<div id="UI">
+    <div class="mdl-shadow--2dp mdl-card">
+
+        <div class="mdl-card__actions mdl-card--border">
+            <div id="controlPanel">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-disabled="STATE == STATES.RUNNING" ng-click="driver.add()">
+                    <span>Add</span>
+                    <i class="material-icons">exposure_plus_1</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-click="STATE = STATES.EDITING;driver.edit()">
+                    <span>Edit</span>
+                    <i class="material-icons">code</i>
+                </button>
+                <button id="btnRun" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-class="{'flashing':STATE===STATES.INITIAL}" ng-disabled="STATE === STATES.RUNNING" ng-click="STATE=driver.run()">
+                    <span>Run</span>
+                    <i class="material-icons">play_arrow</i>
+                </button>
+            </div>
+
+            <ul class="stream" id="result">
+                <li class="badgeHolder">
+                    <span ng-repeat="res in result" data-badge="{{res.offset}}" title="{{res.value}}" data-type="{{res.type}}" class="mdl-badge" ng-attr-id="{{'shape'+res.offset}}"></span>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿<div id="UI">
+    <div class="mdl-shadow--2dp mdl-card">
+        <div class="mdl-card__supporting-text">
+            <div ng-repeat="subject in emittingSubjects track by $index" ng-init="valid = true ;value = true;errorOrCompleted=false;HACKS.MDL();">
+
+                <!-- <input type="text" ng-model="value" ng-change="valid=isJSON(value)" />-->
+                <form action="#" style="display:inline">
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label inputValues" ng-class="{ ' is-invalid' : !valid}">
+
+                        <input class="mdl-textfield__input" ng-attr-id="{{'valueInput'+$index}}" ng-model="value" value="{{value}}" type="text" ng-change="valid=HACKS.HYPHEN(value,$index)">
+                        <label class="mdl-textfield__label" for="{{'valueInput'+$index}}"> Value...</label>
+                        <span class="mdl-textfield__error">Input is not a valid JSON Object!</span>
+                    </div>
+                </form>
+
+
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab btn onNext"  title="onNext(Value)"   ng-click="rxHandler.onNext($index,value)" ng-disabled="!valid || STATE !== STATES.RUNNING || subject.subject.isStopped">
+                    <i class="material-icons">navigate_next</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab btn onCompleted" title="onCompleted()"   ng-click="errorOrCompleted=true;rxHandler.onCompleted($index,value)" ng-disabled="!valid || STATE !== STATES.RUNNING || subject.subject.isStopped">
+                    <i class="material-icons">done_all</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab btn onError" title="onError(err)"   ng-click="errorOrCompleted=true;rxHandler.onError($index,value)" ng-disabled="!valid || STATE !== STATES.RUNNING || subject.subject.isStopped">
+                    <i class="material-icons">error_outline</i>
+                </button>
+
+                <ul class="stream">
+                    <li class="badgeHolder">
+                        <span ng-repeat="emission in subject.emissions" title="{{emission.value}}" ng-attr-id="{{'shape'+emission.offset}}" class="mdl-badge" data-badge="{{emission.offset}}" data-type="{{emission.type}}"></span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <div id="controlPanel">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-disabled="STATE == STATES.RUNNING" ng-click="driver.add()">
+                    <span>Add</span>
+                    <i class="material-icons">exposure_plus_1</i>
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-click="STATE = STATES.EDITING;driver.edit()">
+                    <span>Edit</span>
+                    <i class="material-icons">code</i>
+                </button>
+                <button id="btnRun" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ng-class="{'flashing':STATE===STATES.INITIAL}" ng-disabled="STATE === STATES.RUNNING" ng-click="STATE=driver.run()">
+                    <span>Run</span>
+                    <i class="material-icons">play_arrow</i>
+                </button>
+            </div>
+
+            <ul class="stream" id="result">
+                <li class="badgeHolder">
+                    <span ng-repeat="res in result" data-badge="{{res.offset}}" title="{{res.value}}" data-type="{{res.type}}" class="mdl-badge" ng-attr-id="{{'shape'+res.offset}}"></span>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

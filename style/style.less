@@ -1,0 +1,229 @@
+﻿@badgeSize:25px;
+@badgeHoverColor:yellow;
+@green:#50cc56;
+@red:#ed4545;
+@blue:#3b78d3;
+@fake:white;
+@majorColor:rgb(0,150,136);
+@minorColor:rgb(255,171,64);
+@middleColor:#fff;
+@fontMainColor:rgba(0,0,0,.54);
+.loop(@counter) when (@counter > 0) {
+  .loop((@counter - 1));    // next iteration
+    .mdl-badge[data-badge="@{counter}"] {
+        @fit:(@counter - 1)*@badgeSize;
+    left: unit(@fit, px);
+  }
+}
+.badgeHolder{
+//.loop(100); // launch the loop
+  .mdl-badge{
+      position:relative;
+      display:inline-block;
+      top:-4px;
+    &[data-type="onNext"]::after{
+        background-color:@blue;
+        color:white;
+    }
+    &[data-type="onCompleted"]::after{
+        background-color:@green;
+        color:white;
+    }
+    &[data-type="onError"]::after{
+        background-color:@red;
+        color:white;
+    }
+    &[data-type="onFake"]{
+        top:-7px;
+        &::after{
+        background-color:@fake;
+        content:". . . .";
+        animation: changeContent 0.05s;
+    }}
+   }
+}
+
+button{
+    i {color:white;}
+    &.onNext{background-color:@blue}
+    &.onCompleted{background-color:@green}
+    &.onError{background-color:@red}
+}
+#controlPanel{
+    display:inline-block;
+}
+.stream{
+    display:inline-block;
+    padding-left:0;
+    li {
+        display: inline-block;
+        position: relative;
+    }
+}
+#result{
+    margin-left:160px;
+}
+
+
+#UI{
+    /*resize:vertical;
+    overflow:auto;*/
+    max-width:100%;
+    padding:10px 5px;
+            .mdl-card{
+            width:100%;
+            position:relative;
+                        .mdl-card__supporting-text{
+                max-width:100%;
+                width:auto;
+                min-height:115px;
+            }
+        }
+
+}
+
+@keyframes flash {
+    from {opacity: 1;}
+    to {opacity: 0.5}
+}
+
+@keyframes changeContent {
+  0% {
+    content: ".";
+  }
+  25% {
+    content: ". ";
+  }
+  50% {
+    content: ". . ";
+  }
+  75% {
+    content: ". . .";
+  }
+  100% {
+    content: ". . . .";
+  }
+}
+
+.flashing {
+  animation-name: flash;
+  animation-duration: 0.4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.stream span:last-child{
+  animation-name: pulse;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}
+
+#result span:last-child{
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}
+li {
+   display: inline-block;
+   position: relative;
+}
+
+
+
+    .card-holder{
+        padding:10px 5px 0px 5px;
+        max-width:100%;
+        .mdl-card{
+            width:100%;
+            position:relative;
+            .mdl-card__supporting-text{
+                max-width:100%;
+                width:auto;
+                min-height:115px;
+            }
+        }
+    .title{
+        margin:0;
+        //color:@minorColor
+    }
+    #text{
+
+    }
+    }
+
+    #definition{
+        padding:10px 5px 0px 5px;
+        max-width:100%;
+        .mdl-card{
+            width:100%;
+            position:relative;
+            .mdl-card__supporting-text{
+                max-width:100%;
+                width:auto;
+                min-height:115px;
+            }
+        }
+    #title{
+        margin:0;
+    }
+    #text{
+
+    }
+    }
+.seperator{
+    width:80%;
+    margin:0 auto;
+}
+
+html{
+    background-color:whitesmoke;
+}
+
+.CodeMirror{
+    height:auto;
+}
+
+nav.mdl-navigation ul{
+    padding:0!important;
+    margin:0!important;
+    & a{
+        &.top{
+            color:rgba(0,0,0,.66)!important;
+            font-weight:bold;
+            padding:6px 20px!important;
+        }
+        &.middle{
+            color:rgba(0,0,0,.66)!important;
+            font-style:italic;
+            padding:6px 30px!important;
+        }
+        &.low{
+            color:@majorColor!important;
+            padding:6px 40px!important;
+        }
+    }
+}
+
+
+.zoneHolder{
+     padding:4px;
+     color:@fontMainColor;
+.zone{
+    background-color:@middleColor;
+    border-radius:2px;
+    padding:4px;
+}}
+
+
+
+
+#logo{
+        height: 160px;
+    margin-top: 10px;
+}
+
+#navigator{
+    padding-top:0px;
+}

@@ -1,0 +1,189 @@
+﻿.badgeHolder .mdl-badge {
+  position: relative;
+  display: inline-block;
+  top: -4px;
+}
+.badgeHolder .mdl-badge[data-type="onNext"]::after {
+  background-color: #3b78d3;
+  color: white;
+}
+.badgeHolder .mdl-badge[data-type="onCompleted"]::after {
+  background-color: #50cc56;
+  color: white;
+}
+.badgeHolder .mdl-badge[data-type="onError"]::after {
+  background-color: #ed4545;
+  color: white;
+}
+.badgeHolder .mdl-badge[data-type="onFake"] {
+  top: -7px;
+}
+.badgeHolder .mdl-badge[data-type="onFake"]::after {
+  background-color: white;
+  content: ". . . .";
+  animation: changeContent 0.05s;
+}
+button i {
+  color: white;
+}
+button.onNext {
+  background-color: #3b78d3;
+}
+button.onCompleted {
+  background-color: #50cc56;
+}
+button.onError {
+  background-color: #ed4545;
+}
+#controlPanel {
+  display: inline-block;
+}
+.stream {
+  display: inline-block;
+  padding-left: 0;
+}
+.stream li {
+  display: inline-block;
+  position: relative;
+}
+#result {
+  margin-left: 160px;
+}
+#UI {
+  /*resize:vertical;
+    overflow:auto;*/
+  max-width: 100%;
+  padding: 10px 5px;
+}
+#UI .mdl-card {
+  width: 100%;
+  position: relative;
+}
+#UI .mdl-card .mdl-card__supporting-text {
+  max-width: 100%;
+  width: auto;
+  min-height: 115px;
+}
+@keyframes flash {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes changeContent {
+  0% {
+    content: ".";
+  }
+  25% {
+    content: ". ";
+  }
+  50% {
+    content: ". . ";
+  }
+  75% {
+    content: ". . .";
+  }
+  100% {
+    content: ". . . .";
+  }
+}
+.flashing {
+  animation-name: flash;
+  animation-duration: 0.4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.stream span:last-child {
+  animation-name: pulse;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}
+#result span:last-child {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+}
+li {
+  display: inline-block;
+  position: relative;
+}
+.card-holder {
+  padding: 10px 5px 0px 5px;
+  max-width: 100%;
+}
+.card-holder .mdl-card {
+  width: 100%;
+  position: relative;
+}
+.card-holder .mdl-card .mdl-card__supporting-text {
+  max-width: 100%;
+  width: auto;
+  min-height: 115px;
+}
+.card-holder .title {
+  margin: 0;
+}
+#definition {
+  padding: 10px 5px 0px 5px;
+  max-width: 100%;
+}
+#definition .mdl-card {
+  width: 100%;
+  position: relative;
+}
+#definition .mdl-card .mdl-card__supporting-text {
+  max-width: 100%;
+  width: auto;
+  min-height: 115px;
+}
+#definition #title {
+  margin: 0;
+}
+.seperator {
+  width: 80%;
+  margin: 0 auto;
+}
+html {
+  background-color: whitesmoke;
+}
+.CodeMirror {
+  height: auto;
+}
+nav.mdl-navigation ul {
+  padding: 0!important;
+  margin: 0!important;
+}
+nav.mdl-navigation ul a.top {
+  color: rgba(0, 0, 0, 0.66) !important;
+  font-weight: bold;
+  padding: 6px 20px!important;
+}
+nav.mdl-navigation ul a.middle {
+  color: rgba(0, 0, 0, 0.66) !important;
+  font-style: italic;
+  padding: 6px 30px!important;
+}
+nav.mdl-navigation ul a.low {
+  color: #009688 !important;
+  padding: 6px 40px!important;
+}
+.zoneHolder {
+  padding: 4px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.zoneHolder .zone {
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 4px;
+}
+#logo {
+  height: 160px;
+  margin-top: 10px;
+}
+#navigator {
+  padding-top: 0px;
+}

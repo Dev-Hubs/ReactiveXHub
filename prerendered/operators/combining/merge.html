@@ -1,0 +1,45 @@
+﻿<div id="codeTemplate">
+
+
+    <div id="definition">
+        <div class="mdl-card mdl-shadow--2dp">
+
+            <div class="mdl-card__supporting-text">
+                <h4 id="title">Merge</h4>
+                <p id="text">
+                    Combine multiple observables into one by ORING their emission
+                 </p>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple" href="{{data.href_ext}}" target="_blank">
+                    Read More
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span>
+                </a>
+            </div>
+
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" data-upgraded=",MaterialButton,MaterialRipple">
+                    <i class="material-icons">share</i>
+                    <span class="mdl-button__ripple-container"><span class="mdl-ripple">hi</span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--hr class="seperator" />-->
+
+</div>
+<ng-include src="'views/buttons.html'"></ng-include>
+<textarea id="snippet" style="display:none">
+Rx.Observable.merge(OBS[0],OBS[1])
+  .subscribe((value=>{
+    console.log(value);
+  }),
+  (err=>{
+    console.warn(err);
+  }),
+  (()=>{
+    console.info('completed');
+  })
+);
+</textarea>
+
